@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+service Examples {
+  rpc SayHello(HelloRequest) returns (HelloReply) {}
+  rpc ServerStreamExample(Seed) returns (stream JustANumber) {}
+  rpc ClientStreamExample(stream JustANumber) returns (ReplySum) {}
+  rpc BidirectionalStreamingExample(stream JustANumber) returns (stream JustANumber) {}
+}
+
+message HelloRequest {
+  string name = 1;
+}
+
+message HelloReply {
+  string message = 1;
+}
+
+message Seed {
+  int32 seed = 1;
+}
+
+message JustANumber {
+  int32 number = 1;
+}
+
+message ReplySum {
+  int32 sum = 1;
+}
